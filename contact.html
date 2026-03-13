@@ -3,98 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>İletişim</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="wrapper">
+
+    <nav>
+        <span class="nav-brand">Sümeyye Karaköse</span>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="interests.html">İlgi Alanlarım</a></li>
+            <li><a href="contact.html" class="active">İletişim</a></li>
+        </ul>
+    </nav>
 
     <header>
         <h1>İletişim</h1>
         <p>Benimle iletişime geçebileceğiniz bilgiler</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <h2>İletişim Bilgilerim</h2>
-        <ul>
-            <li>E-posta: <a href="mailto:sumeyyekarakose252@gmail.com">sumeyyekarakose252@gmail.com</a></li>
-            <li>Telefon: <a href="tel:+905551112233">+90 555 111 22 33</a></li>
-            <li>GitHub: <a href="https://github.com/sumeyyekarakosee">GitHub Profilim</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/s%C3%BCmeyye-karak%C3%B6se-54013b3aa/">LinkedIn Profilim</a></li>
-        </ul>
+        <div class="content">
+            <h2>İletişim Bilgilerim</h2>
+            <ul>
+                <li>E-posta: <a href="mailto:sumeyyekarakose252@gmail.com">sumeyyekarakose252@gmail.com</a></li>
+                <li>Telefon: <a href="tel:+905551112233">+90 555 111 22 33</a></li>
+                <li>GitHub: <a href="https://github.com/sumeyyekarakosee">GitHub Profilim</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/s%C3%BCmeyye-karak%C3%B6se-54013b3aa/">LinkedIn Profilim</a></li>
+            </ul>
+        </div>
 
-        <h2>Sık Sorulan Sorular</h2>
+        <div class="sidebar">
+            <h2>Sık Sorulan Sorular</h2>
 
-        <h3>Mesajlara ne kadar sürede dönüş yapıyorsunuz?</h3>
-        <p>Genellikle 24 saat içinde e-posta yoluyla dönüş yapıyorum.</p>
+            <h3>Mesajlara ne kadar sürede dönüş yapıyorsunuz?</h3>
+            <p>Genellikle 24 saat içinde e-posta yoluyla dönüş yapıyorum.</p>
 
-        <h3>Projelerde iş birliğine açık mısınız?</h3>
-        <p>Evet, özellikle eğitim ve açık kaynak projelerinde iş birliklerine açığım.</p>
+            <h3>Projelerde iş birliğine açık mısınız?</h3>
+            <p>Evet, özellikle eğitim ve açık kaynak projelerinde iş birliklerine açığım.</p>
 
-        <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
+            <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
+        </div>
     </main>
 
+    <div class="contact-container">
+        <h2>Detaylı İletişim Formu</h2>
+
+        <form action="#" method="post">
+            <label for="adSoyad">Ad Soyad:</label>
+            <input type="text" id="adSoyad" name="adSoyad" placeholder="Örn: Sümeyye Karaköse" required>
+
+            <label for="eposta">E-posta Adresi:</label>
+            <input type="email" id="eposta" name="eposta" placeholder="ornek@gmail.com" required>
+
+            <label for="sifre">Başvuru Takip Şifresi:</label>
+            <input type="password" id="sifre" name="sifre" placeholder="Şifrenizi girin">
+
+            <label>İletişim Tercihi:</label>
+            <div class="radio-group">
+                <input type="radio" id="tercihEposta" name="iletisimTercihi" value="eposta" checked>
+                <label for="tercihEposta" class="inline-label">Bana e-posta ile ulaşın</label><br>
+                <input type="radio" id="tercihTelefon" name="iletisimTercihi" value="telefon">
+                <label for="tercihTelefon" class="inline-label">Bana telefonla ulaşın</label>
+            </div>
+
+            <label>İlgi Alanları / Yetenekler:</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="yetenekHtml" name="yetenekler" value="HTML">
+                <label for="yetenekHtml" class="inline-label">HTML</label><br>
+                <input type="checkbox" id="yetenekCss" name="yetenekler" value="CSS">
+                <label for="yetenekCss" class="inline-label">CSS</label><br>
+                <input type="checkbox" id="yetenekAlgoritma" name="yetenekler" value="Algoritma">
+                <label for="yetenekAlgoritma" class="inline-label">Algoritma</label>
+            </div>
+
+            <label for="konu">Konu:</label>
+            <select id="konu" name="konu" required>
+                <option value="" disabled selected>Lütfen bir konu seçin..</option>
+                <option value="is_teklifi">İş Teklifi</option>
+                <option value="soru">Soru</option>
+                <option value="geri_bildirim">Geri Bildirim</option>
+            </select>
+
+            <label for="dosya">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+            <input type="file" id="dosya" name="dosya">
+
+            <label for="mesaj">Mesajınız:</label>
+            <textarea id="mesaj" name="mesaj" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz.." required></textarea>
+
+            <div class="button-group">
+                <button type="submit" class="btn-submit">Gönder</button>
+                <button type="reset" class="btn-reset">Temizle</button>
+            </div>
+        </form>
+    </div>
+
     <footer>
-        <hr>
         <p>&copy; 2026 Web Programlama Dersi</p>
     </footer>
 
-    <div class="contact-container">
-    <h2>Detaylı İletişim Formu</h2>
-    
-    <form action="#" method="post">
-        <label for="adSoyad">Ad Soyad:</label>
-        <input type="text" id="adSoyad" name="adSoyad" placeholder="Örn: Sümeyye Karaköse" required>
-
-        <label for="eposta">E-posta Adresi:</label>
-        <input type="email" id="eposta" name="eposta" placeholder="ornek@gmail.com" required>
-
-        <label for="sifre">Başvuru Takip Şifresi:</label>
-        <input type="password" id="sifre" name="sifre" placeholder="Şifrenizi girin">
-
-        <label>İletişim Tercihi:</label>
-        <div class="radio-group">
-            <input type="radio" id="tercihEposta" name="iletisimTercihi" value="eposta" checked>
-            <label for="tercihEposta" class="inline-label">Bana e-posta ile ulaşın</label><br>
-            <input type="radio" id="tercihTelefon" name="iletisimTercihi" value="telefon">
-            <label for="tercihTelefon" class="inline-label">Bana telefonla ulaşın</label>
-        </div>
-
-        <label>İlgi Alanları / Yetenekler:</label>
-        <div class="checkbox-group">
-            <input type="checkbox" id="yetenekHtml" name="yetenekler" value="HTML">
-            <label for="yetenekHtml" class="inline-label">HTML</label><br>
-            <input type="checkbox" id="yetenekCss" name="yetenekler" value="CSS">
-            <label for="yetenekCss" class="inline-label">CSS</label><br>
-            <input type="checkbox" id="yetenekAlgoritma" name="yetenekler" value="Algoritma">
-            <label for="yetenekAlgoritma" class="inline-label">Algoritma</label>
-        </div>
-
-        <label for="konu">Konu:</label>
-        <select id="konu" name="konu" required>
-            <option value="" disabled selected>Lütfen bir konu seçin..</option>
-            <option value="is_teklifi">İş Teklifi</option>
-            <option value="soru">Soru</option>
-            <option value="geri_bildirim">Geri Bildirim</option>
-        </select>
-
-        <label for="dosya">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
-        <input type="file" id="dosya" name="dosya">
-
-        <label for="mesaj">Mesajınız:</label>
-        <textarea id="mesaj" name="mesaj" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz.." required></textarea>
-
-        <div class="button-group">
-            <button type="submit" class="btn-submit">Gönder</button>
-            <button type="reset" class="btn-reset">Temizle</button>
-        </div>
-    </form>
 </div>
 
 </body>
