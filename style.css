@@ -342,3 +342,117 @@ footer {
   padding: 18px 28px;
   font-size: 0.85rem;
 }
+
+/* ── HEADER PROFILE LINKS ── */
+.header-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.header-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border: 1px solid var(--right-border);
+  border-radius: 20px;
+  background: var(--right-bg);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.header-profile-link:hover {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+
+/* ── FAQ SECTION ── */
+.faq-container {
+  width: 600px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto 40px;
+  padding: 28px 36px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--left-border);
+  border-radius: 6px;
+  background-color: var(--left-bg);
+}
+
+.faq-container h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item {
+  margin-bottom: 18px;
+}
+
+.faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq-item h3 {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.faq-item p {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ── SUCCESS MESSAGE ── */
+.success-msg {
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ── FOOTER WITH BACK BUTTON ── */
+footer {
+  background: var(--footer-bg);
+  color: #aaa;
+  padding: 18px 28px;
+  font-size: 0.85rem;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-back {
+  display: inline-block;
+  text-decoration: none;
+  color: #ccc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-back:hover {
+  background: #444;
+  color: var(--white);
+}
