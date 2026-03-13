@@ -159,3 +159,103 @@ footer {
   padding: 18px 28px;
   font-size: 0.85rem;
 }
+
+/* İletişim Formu Ana Konteyner */
+.contact-container {
+    width: 600px; 
+    max-width: 90%; 
+    margin: 40px auto; 
+    padding: 30px; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    font-family: sans-serif;
+}
+
+.contact-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Label (Etiket) Ayarları */
+.contact-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    color: #444;
+}
+
+/* Çoklu Seçici ile Input, Select ve Textarea Ayarları */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container input[type="password"],
+.contact-container select,
+.contact-container textarea {
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+.radio-group,
+.checkbox-group {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.contact-container label.inline-label {
+    display: inline;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+/* Dosya yükleme inputu */
+.contact-container input[type="file"] {
+    margin-bottom: 20px;
+}
+
+/* Buton Grubu ve Düzeni */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Gönder ve Temizle Butonları */
+.btn-submit,
+.btn-reset {
+    flex: 1; 
+    padding: 12px 20px; 
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s background-color;
+}
+
+/* Gönder Butonu Rengi */
+.btn-submit {
+    background-color: #007bff; 
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Temizle Butonu Rengi */
+.btn-reset {
+    background-color: #dc3545;
+}
+
+.btn-reset:hover {
+    background-color: #c82333;
+}
