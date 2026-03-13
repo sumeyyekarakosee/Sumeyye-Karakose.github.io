@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap');
 
 :root {
-  --cream:      #f5f0e8;
-  --white:      #ffffff;
-  --sand:       #e8dfc8;
-  --accent:     #5b7fa6;
-  --accent-dk:  #3d5c80;
-  --text:       #2c2c2c;
-  --muted:      #6b6b6b;
-  --border:     #d4c9b0;
-  --left-bg:    #fdf6e3;
-  --right-bg:   #eaf0f8;
-  --left-border:#c8b88a;
-  --right-border:#9ab4cc;
-  --footer-bg:  #2c2c2c;
+  --cream:        #f5f0e8;
+  --white:        #ffffff;
+  --sand:         #e8dfc8;
+  --accent:       #5b7fa6;
+  --accent-dk:    #3d5c80;
+  --text:         #2c2c2c;
+  --muted:        #6b6b6b;
+  --border:       #d4c9b0;
+  --left-bg:      #fdf6e3;
+  --right-bg:     #eaf0f8;
+  --left-border:  #c8b88a;
+  --right-border: #9ab4cc;
+  --footer-bg:    #2c2c2c;
 }
 
 *, *::before, *::after {
@@ -44,6 +44,7 @@ h1, h2, p {
   overflow: hidden;
 }
 
+/* ── NAV ── */
 nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -93,6 +94,7 @@ nav a.active {
   color: var(--white);
 }
 
+/* ── HEADER ── */
 header {
   padding: 36px 40px 28px;
   border-bottom: 1px solid var(--border);
@@ -112,6 +114,7 @@ header p {
   color: var(--muted);
 }
 
+/* ── MAIN (two-column) ── */
 main {
   padding: 32px 40px;
   display: flex;
@@ -146,116 +149,196 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
+.content a, .sidebar a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.content a:hover, .sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar h3 {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 14px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.sidebar p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
 ul, ol {
   margin-left: 20px;
   margin-bottom: 15px;
   font-size: 0.93rem;
 }
 
+/* ── CONTACT FORM ── */
+.contact-container {
+  width: 600px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto 40px;
+  padding: 32px 36px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  background-color: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.contact-container h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 28px;
+  color: var(--text);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Labels */
+.contact-container label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  margin-top: 18px;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+/* Inputs, select, textarea */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container input[type="password"],
+.contact-container select,
+.contact-container textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 4px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.93rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.contact-container input[type="text"]:focus,
+.contact-container input[type="email"]:focus,
+.contact-container input[type="password"]:focus,
+.contact-container select:focus,
+.contact-container textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(91, 127, 166, 0.15);
+}
+
+.contact-container textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Radio & Checkbox groups */
+.radio-group,
+.checkbox-group {
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  font-size: 0.93rem;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+  accent-color: var(--accent);
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.contact-container label.inline-label {
+  display: inline;
+  font-weight: 400;
+  margin-top: 0;
+  font-size: 0.93rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.radio-group br,
+.checkbox-group br {
+  line-height: 2.2;
+}
+
+/* File input */
+.contact-container input[type="file"] {
+  margin-bottom: 4px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.btn-submit,
+.btn-reset {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.1s;
+}
+
+.btn-submit {
+  background-color: #2563eb;
+}
+
+.btn-submit:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+.btn-reset {
+  background-color: #e53e3e;
+}
+
+.btn-reset:hover {
+  background-color: #c53030;
+}
+
+.btn-reset:active {
+  transform: scale(0.98);
+}
+
+/* ── FOOTER ── */
 footer {
   background: var(--footer-bg);
   color: #aaa;
   text-align: center;
   padding: 18px 28px;
   font-size: 0.85rem;
-}
-
-/* İletişim Formu Ana Konteyner */
-.contact-container {
-    width: 600px; 
-    max-width: 90%; 
-    margin: 40px auto; 
-    padding: 30px; 
-    border: 1px solid #e0e0e0; 
-    border-radius: 8px; 
-    background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
-    font-family: sans-serif;
-}
-
-.contact-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-}
-
-/* Label (Etiket) Ayarları */
-.contact-container label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    margin-top: 15px;
-    color: #444;
-}
-
-/* Çoklu Seçici ile Input, Select ve Textarea Ayarları */
-.contact-container input[type="text"],
-.contact-container input[type="email"],
-.contact-container input[type="password"],
-.contact-container select,
-.contact-container textarea {
-    width: 100%; 
-    padding: 12px; 
-    margin-bottom: 10px; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-}
-
-.radio-group,
-.checkbox-group {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-}
-
-.contact-container label.inline-label {
-    display: inline;
-    font-weight: normal;
-    margin-top: 0;
-}
-
-/* Dosya yükleme inputu */
-.contact-container input[type="file"] {
-    margin-bottom: 20px;
-}
-
-/* Buton Grubu ve Düzeni */
-.button-group {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-/* Gönder ve Temizle Butonları */
-.btn-submit,
-.btn-reset {
-    flex: 1; 
-    padding: 12px 20px; 
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s background-color;
-}
-
-/* Gönder Butonu Rengi */
-.btn-submit {
-    background-color: #007bff; 
-}
-
-.btn-submit:hover {
-    background-color: #0056b3;
-}
-
-/* Temizle Butonu Rengi */
-.btn-reset {
-    background-color: #dc3545;
-}
-
-.btn-reset:hover {
-    background-color: #c82333;
 }
