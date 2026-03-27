@@ -456,3 +456,32 @@ footer {
   background: #444;
   color: var(--white);
 }
+
+/*26 Mart 2026 bağımsız ekleme*/
+
+.btn-27mar26 {
+  display: inline-block;          
+  margin-top: 20px; 
+  padding: 10px 22px;
+  background-color: var(--accent-dk);  
+  color: var(--white);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;           
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.1s;
+  cursor: pointer;
+}
+ 
+.btn-27mar26:hover {
+  background-color: var(--accent);       
+  border-color: var(--accent-dk);       
+  text-decoration: none;                
+}
+ 
+.btn-27mar26:active {
+  transform: scale(0.97);               
+}
