@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── RESET & ROOT ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -20,34 +19,20 @@
       --text:         #2c2c2c;
       --muted:        #6b6b6b;
       --border:       #d4c9b0;
-      --left-bg:      #fdf6e3;
-      --right-bg:     #eaf0f8;
-      --left-border:  #c8b88a;
-      --right-border: #9ab4cc;
       --footer-bg:    #2c2c2c;
-
-      /* Kart renkleri */
-      --card-blue:   #dbeafe;
-      --card-green:  #dcfce7;
-      --card-orange: #ffedd5;
-      --card-purple: #ede9fe;
-      --card-pink:   #fce7f3;
-      --card-yellow: #fef9c3;
-
-      /* Flex-grow kutu renkleri */
-      --box1-bg: #dbeafe;
-      --box2-bg: #dcfce7;
-      --box3-bg: #ffedd5;
+      --box1-bg:      #dbeafe;
+      --box2-bg:      #dcfce7;
+      --box3-bg:      #ffedd5;
     }
 
     .wrapper {
       display: flex;
       flex-direction: column;  
-      height: 100vh;            
+      height: 100vh;
+      overflow-y: auto;
       font-family: 'Source Sans 3', sans-serif;
       color: var(--text);
       background: var(--cream);
-      overflow: hidden;
     }
 
     nav {
@@ -79,33 +64,14 @@
       border-radius: 3px;
       transition: color .2s, background .2s;
     }
-    nav a:hover { color: var(--accent); background: var(--right-bg); }
-
-    /* Etiket bandı (wireframe notları) */
-    .tag-bar {
-      display: flex;
-      gap: 8px;
-      padding: 4px 28px;
-      background: #f0f0f0;
-      border-bottom: 1px solid #ddd;
-      flex-shrink: 0;
-    }
-    .tag {
-      font-size: 0.72rem;
-      color: #555;
-      background: var(--white);
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      padding: 2px 10px;
-      font-family: monospace;
-    }
+    nav a:hover { color: var(--accent); background: #eaf0f8; }
 
     .hero {
       display: flex;
       flex-direction: row;      
       justify-content: space-between;
       align-items: stretch;     
-      height: 30vh;             
+      min-height: 35vh;             
       padding: 20px 28px;
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -136,7 +102,6 @@
       border: none;
       padding: 8px 20px;
       border-radius: 4px;
-      font-family: 'Source Sans 3', sans-serif;
       font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
@@ -146,16 +111,14 @@
     .hero-btn:hover { background: var(--accent-dk); }
 
     .hero-image {
-  flex: 1;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  object-fit: cover;   
-}
-
-    .hero-tag-bar { flex-shrink: 0; }
+      flex: 1;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      object-fit: cover;   
+    }
 
     .section {
-      padding: 14px 28px;
+      padding: 25px 28px;
       background: var(--cream);
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
@@ -165,7 +128,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .section-title {
@@ -174,117 +137,52 @@
       font-weight: 700;
     }
 
-    .section-tags { display: flex; gap: 6px; }
-
-    /* Kartlar */
     .cards {
       display: flex;        
       flex-wrap: wrap;       
-      gap: 10px;             
-      height: 16vh;         
-      overflow: hidden;
+      gap: 12px;             
     }
 
     .card {
-      flex: 1 1 130px;
+      flex: 1 1 180px;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      min-width: 120px;
-    }
-
-    .card h3 { font-family: 'Lora', serif; font-size: 0.88rem; font-weight: 700; }
-    .card p  { font-size: 0.8rem; color: var(--muted); flex: 1; }
-    .card button {
-      background: var(--accent);
-      color: var(--white);
-      border: none;
-      border-radius: 4px;
-      padding: 5px 12px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Source Sans 3', sans-serif;
-      transition: background .2s;
-      align-self: flex-start;
-    }
-    .card button:hover { background: var(--accent-dk); }
-
-    /* ══════════════════════════════
-       4a) FLEX GROW UYGULAMA (with buttons) – 20vh
-       PDF: flex-grow 1-2-1, align-items: stretch
-    ══════════════════════════════ */
-    .flex-grow-boxes {
-      display: flex;         /* PDF: display: flex */
-      gap: 12px;
-      align-items: stretch;  /* PDF: align-items: stretch */
-      height: 13vh;
-    }
-
-    .fbox {
+      padding: 15px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
     }
 
-    .fbox h4 { font-family: 'Lora', serif; font-size: 0.88rem; font-weight: 700; }
-    .fbox span { font-size: 0.78rem; color: var(--muted); flex: 1; }
-    .fbox button {
-      border: none;
-      border-radius: 4px;
-      padding: 5px 12px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Source Sans 3', sans-serif;
-      color: var(--white);
-      align-self: flex-start;
-      transition: background .2s;
-    }
+    .card h3 { font-family: 'Lora', serif; font-size: 0.88rem; font-weight: 700; }
+    .card p { font-size: 0.8rem; color: var(--muted); }
 
-    .fbox1 { flex-grow: 1; background: var(--box1-bg); }  /* PDF: flex-grow: 1 */
-    .fbox2 { flex-grow: 2; background: var(--box2-bg); }  /* PDF: flex-grow: 2 */
-    .fbox3 { flex-grow: 1; background: var(--box3-bg); }  /* PDF: flex-grow: 1 */
-
-    .fbox1 button { background: var(--accent); }
-    .fbox2 button { background: #16a34a; }
-    .fbox3 button { background: #ea580c; }
-
-    .flex-grow-simple {
+    .flex-grow-boxes, .flex-grow-simple {
       display: flex;
       gap: 12px;
-      align-items: stretch;  /* PDF: align-items: stretch */
-      height: 10vh;
+      align-items: stretch;
+      min-height: 120px;
     }
 
-    .sbox {
+    .fbox, .sbox {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 10px 14px;
+      padding: 15px;
       border-radius: 6px;
       border: 1px solid var(--border);
     }
 
-    .sbox h4 { font-family: 'Lora', serif; font-size: 0.88rem; font-weight: 700; }
-    .sbox span { font-size: 0.78rem; color: var(--muted); }
+    .fbox h4, .sbox h4 { font-family: 'Lora', serif; font-size: 0.88rem; }
 
-    .sbox1 { flex-grow: 1; background: var(--box1-bg); }
-    .sbox2 { flex-grow: 2; background: var(--box2-bg); }
-    .sbox3 { flex-grow: 1; background: var(--box3-bg); }
+    .grow-1 { flex-grow: 1; background: var(--box1-bg); }
+    .grow-2 { flex-grow: 2; background: var(--box2-bg); }
+    .grow-3 { flex-grow: 1; background: var(--box3-bg); }
 
     footer {
       display: flex;
-      justify-content: center;   /* PDF: justify-content: center */
-      align-items: center;       /* PDF: align-items: center */
-      height: 10vh;              /* PDF: 10vh */
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
       background: var(--footer-bg);
       color: #aaa;
       font-size: 0.85rem;
@@ -297,7 +195,6 @@
 
 <div class="wrapper">
 
-  <!--  NAVBAR  10vh -->
   <nav>
     <span class="nav-brand">LOGO</span>
     <ul>
@@ -308,92 +205,38 @@
     </ul>
   </nav>
 
-  <!--  HERO  30vh -->
   <div class="hero">
     <div class="hero-text">
       <h1>Sümeyye Karaköse</h1>
       <p>Bilgisayar Mühendisliği | Marmara Üniversitesi</p>
-      <button class="hero-btn">Buton</button>
+      <button class="hero-btn">Detaylar</button>
     </div>
     <img src="WhatsApp Image 2026-03-16 at 21.40.04.jpeg" alt="Hero Fotoğraf" class="hero-image" />
   </div>
 
-  <!--  KARTLAR  30vh -->
   <div class="section">
     <div class="section-header">
       <span class="section-title">Kartlar Bölümü</span>
-      <div class="section-tags">
-        <span class="tag">multiple items</span>
-        <span class="tag">flex layout – wrap</span>
-      </div>
     </div>
     <div class="cards">
-      <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama</p><button>Buton</button></div>
-      <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama</p><button>Buton</button></div>
-      <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama</p><button>Buton</button></div>
-      <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama</p><button>Buton</button></div>
-      <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama</p><button>Buton</button></div>
-      <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama</p><button>Buton</button></div>
+      <div class="card"><h3>Kart 1</h3><p>İçerik açıklaması.</p></div>
+      <div class="card"><h3>Kart 2</h3><p>İçerik açıklaması.</p></div>
+      <div class="card"><h3>Kart 3</h3><p>İçerik açıklaması.</p></div>
+      <div class="card"><h3>Kart 4</h3><p>İçerik açıklaması.</p></div>
     </div>
   </div>
 
-  <!--  FLEX GROW (butonlu)  20vh -->
   <div class="section">
     <div class="section-header">
-      <span class="section-title">Flex Grow Uygulama</span>
-      <div class="section-tags">
-        <span class="tag">flex-grow:</span>
-        <span class="tag">height: 20vh</span>
-        <span class="tag">stretch (esneme)</span>
-      </div>
+      <span class="section-title">Flex Grow 1-2-1</span>
     </div>
     <div class="flex-grow-boxes">
-      <div class="fbox fbox1">
-        <h4>1 Kutu</h4>
-        <span>flex-grow: 1;</span>
-        <button>Buton</button>
-      </div>
-      <div class="fbox fbox2">
-        <h4>2 Kutu</h4>
-        <span>flex-grow: 2;</span>
-        <button>Buton</button>
-      </div>
-      <div class="fbox fbox3">
-        <h4>3 Kutu</h4>
-        <span>flex-grow: 1;</span>
-        <button>Buton</button>
-      </div>
+      <div class="fbox grow-1"><h4>Kutu 1</h4><span>Grow: 1</span></div>
+      <div class="fbox grow-2"><h4>Kutu 2</h4><span>Grow: 2</span></div>
+      <div class="fbox grow-3"><h4>Kutu 3</h4><span>Grow: 1</span></div>
     </div>
-  </div>
-  <div class="tag-bar">
-    <span class="tag">multiple items</span>
-    <span class="tag">flex layout + wrap</span>
-    <span class="tag">gap + align/hizalama</span>
   </div>
 
-  <!--  FLEX GROW   20vh -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-title">Flex Grow Uygulama</span>
-      <div class="section-tags">
-        <span class="tag">flex-grow:</span>
-        <span class="tag">height: 20vh</span>
-        <span class="tag">stretch (esneme)</span>
-      </div>
-    </div>
-    <div class="flex-grow-simple">
-      <div class="sbox sbox1"><h4>1 Kutu</h4><span>flex-grow: 1;</span></div>
-      <div class="sbox sbox2"><h4>2 Kutu</h4><span>flex-grow: 2;</span></div>
-      <div class="sbox sbox3"><h4>3 Kutu</h4><span>flex-grow: 1;</span></div>
-    </div>
-  </div>
-  <div class="tag-bar">
-    <span class="tag">flex-grow</span>
-    <span class="tag">height: 20vh</span>
-    <span class="tag">stretch (esneme)</span>
-  </div>
-
-  <!--   FOOTER  10vh -->
   <footer>© 2026 – Temel Flexbox Örneği</footer>
 
 </div>
