@@ -565,6 +565,28 @@ footer {
 .btn-hafta:active {
   transform: scale(0.97);
 }
-/* ════════════════════════════════════════════════════════════════
-   ★ YENİ EKLEME SONU
-   ════════════════════════════════════════════════════════════════ */
+.btn-birim {
+  display: inline-block;
+  padding: 10px 22px;
+  background-color: #5b9a78; /* Mühendislik temasına uygun yeşil tonu */
+  color: var(--white);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.1s;
+  cursor: pointer;
+}
+
+.btn-birim:hover {
+  background-color: #4a7e62;
+  border-color: #5b9a78;
+  text-decoration: none;
+}
+
+.btn-birim:active {
+  transform: scale(0.97);
+}
