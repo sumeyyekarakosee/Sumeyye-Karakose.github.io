@@ -3,80 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uygulama-2 | Birim Dönüştürücü</title>
+    <title>Sümeyye Karaköse | Birim Dönüştürücü</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Bu sayfaya özel ek stiller */
-        .converter-container {
-            width: 450px;
-            max-width: 90%;
-            margin: 50px auto;
-            padding: 30px;
-            background: white;
+        /* Uygulama 2'ye özel kutu tasarımı */
+        .app-container {
+            background-color: #fff;
+            border: 1px solid var(--border);
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+            padding: 30px;
+            max-width: 500px;
+            margin: 20px auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        .converter-container h2 {
-            font-family: 'Lora', serif;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
+        .app-container h2 {
+            text-align: center;
+            color: var(--accent-dk);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--sand);
             padding-bottom: 10px;
         }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
-        
-        .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #dcfce7;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+        .result-display {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
             color: #166534;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 20px;
         }
-        .btn-calc {
-            width: 100%;
-            padding: 12px;
-            background-color: #2563eb;
+        .calc-button {
+            background-color: var(--accent);
             color: white;
             border: none;
+            padding: 12px;
+            width: 100%;
             border-radius: 5px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
+            transition: background 0.2s;
         }
+        .calc-button:hover { background-color: var(--accent-dk); }
     </style>
 </head>
 <body>
-
 <div class="wrapper">
+    <nav>
+        <span class="nav-brand">Sümeyye Karaköse</span>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="interests.html">İlgi Alanlarım</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+        </ul>
+    </nav>
+
     <header>
-        <h1>Uygulama-2 <small style="font-size: 0.5em; color: gray;">Hafta 6-2</small></h1>
-        <p>Birim Dönüştürücü Uygulaması — Mühendislik Hesaplamaları</p>
+        <h1>Uygulama 2: Birim Dönüştürücü</h1>
+        <p>Mühendislik birimleri arasında hızlı ve kolay dönüşüm yapın.</p>
     </header>
 
-    <main style="display: block;"> <div class="converter-container">
-            <h2>Birim Dönüştürücü</h2>
+    <main style="display: block;">
+        <div class="app-container">
+            <h2>Birim Dönüştür</h2>
             
-            <div class="form-group">
-                <label>Değer Giriniz:</label>
-                <input type="number" id="inputValue" placeholder="Örn: 50" class="contact-container" style="margin-bottom:0;">
-            </div>
+            <div class="contact-container" style="width: 100%; border: none; box-shadow: none; padding: 0;">
+                <label>Dönüştürülecek Değer:</label>
+                <input type="number" id="inputValue" placeholder="Değeri giriniz..." step="any">
 
-            <div class="form-group">
-                <label>Dönüşüm Tipi:</label>
-                <select id="convertType" class="contact-container">
-                    <option value="c-f">Celsius -> Fahrenheit</option>
-                    <option value="c-k">Celsius -> Kelvin</option>
-                    <option value="m-km">Metre -> Kilometre</option>
-                    <option value="kg-g">Kilogram -> Gram</option>
+                <label>Dönüşüm Seçiniz:</label>
+                <select id="unitType">
+                    <optgroup label="Sıcaklık">
+                        <option value="c-f">Celsius -> Fahrenheit</option>
+                        <option value="c-k">Celsius -> Kelvin</option>
+                        <option value="f-c">Fahrenheit -> Celsius</option>
+                    </optgroup>
+                    <optgroup label="Uzunluk">
+                        <option value="m-km">Metre -> Kilometre</option>
+                        <option value="km-m">Kilometre -> Metre</option>
+                        <option value="m-mi">Metre -> Mil</option>
+                    </optgroup>
                 </select>
+
+                <button class="calc-button" onclick="convertUnits()" style="margin-top: 20px;">Hesapla</button>
             </div>
 
-            <button onclick="hesapla()" class="btn-calc">Hesapla</button>
-
-            <div class="result-box" id="resultArea">
+            <div id="resultBox" class="result-display">
                 Sonuç: -
             </div>
         </div>
@@ -91,28 +105,32 @@
 </div>
 
 <script>
-    function hesapla() {
+    function convertUnits() {
         const val = parseFloat(document.getElementById('inputValue').value);
-        const type = document.getElementById('convertType').value;
-        const resArea = document.getElementById('resultArea');
-        
+        const type = document.getElementById('unitType').value;
+        const resultBox = document.getElementById('resultBox');
+
         if (isNaN(val)) {
-            resArea.innerHTML = "Lütfen bir sayı girin!";
+            resultBox.innerText = "Lütfen geçerli bir sayı giriniz!";
+            resultBox.style.color = "#991b1b";
             return;
         }
 
-        let result;
+        let result = 0;
+        let unit = "";
+
         switch(type) {
-            case 'c-f': result = (val * 9/5) + 32; break;
-            case 'c-k': result = val + 273.15; break;
-            case 'm-km': result = val / 1000; break;
-            case 'kg-g': result = val * 1000; break;
+            case 'c-f': result = (val * 9/5) + 32; unit = " °F"; break;
+            case 'c-k': result = val + 273.15; unit = " K"; break;
+            case 'f-c': result = (val - 32) * 5/9; unit = " °C"; break;
+            case 'm-km': result = val / 1000; unit = " km"; break;
+            case 'km-m': result = val * 1000; unit = " m"; break;
+            case 'm-mi': result = val * 0.00062137; unit = " mi"; break;
         }
 
-        // Sonucu binlik ayracı ile biçimlendir (Görseldeki 50.000 formatı için)
-        resArea.innerHTML = "Sonuç: " + result.toLocaleString('tr-TR');
+        resultBox.style.color = "#166534";
+        resultBox.innerText = "Sonuç: " + result.toFixed(2) + unit;
     }
 </script>
-
 </body>
 </html>
