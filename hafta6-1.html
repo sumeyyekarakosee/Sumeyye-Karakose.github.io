@@ -9,9 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ── HAFta 6-1 sayfasına özel stiller ── */
-
-    /* Hesaplama formu kapsayıcısı – mevcut .contact-container ile aynı yapı */
     .calc-container {
       width: 560px;
       max-width: calc(100% - 80px);
@@ -35,7 +32,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Input alanları – mevcut contact form stiliyle birebir uyumlu */
     .calc-container label {
       display: block;
       font-weight: 600;
@@ -67,7 +63,6 @@
       box-shadow: 0 0 0 3px rgba(91, 127, 166, 0.15);
     }
 
-    /* Hata mesajı – input altında kırmızı küçük yazı */
     .field-error {
       font-size: 0.8rem;
       color: #dc2626;
@@ -78,7 +73,6 @@
     }
     .field-error.visible { display: block; }
 
-    /* Hesapla butonu – mevcut .btn-submit ile aynı stil */
     .btn-hesapla {
       width: 100%;
       padding: 12px 20px;
@@ -97,7 +91,6 @@
     .btn-hesapla:hover  { background-color: var(--accent-dk); }
     .btn-hesapla:active { transform: scale(0.98); }
 
-    /* Sonuç kutusu */
     .result-box {
       margin-top: 24px;
       padding: 20px 22px;
@@ -105,7 +98,7 @@
       border: 1px solid var(--left-border);
       border-top: 3px solid var(--left-border);
       border-radius: 6px;
-      display: none;           /* JavaScript ile gösterilir */
+      display: none;
       animation: fadeIn .35s ease;
     }
     .result-box.visible { display: block; }
@@ -136,7 +129,6 @@
       font-weight: 600;
     }
 
-    /* Geçti / Kaldı renk vurgusu */
     .badge {
       display: inline-block;
       font-size: 0.8rem;
@@ -145,29 +137,13 @@
       border-radius: 20px;
       letter-spacing: 0.03em;
     }
-    .badge.gecti  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
-    .badge.kaldi  { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-
-    /* Uygulama açıklama bandı */
-    .uygulama-info {
-      width: 560px;
-      max-width: calc(100% - 80px);
-      margin: 0 auto 0;
-      padding: 14px 20px;
-      background: var(--right-bg);
-      border: 1px solid var(--right-border);
-      border-radius: 6px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .uygulama-info strong { color: var(--text); }
+    .badge.gecti { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .badge.kaldi { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
   </style>
 </head>
 <body>
 <div class="wrapper">
 
-  <!-- NAV – mevcut tasarımla aynı -->
   <nav>
     <span class="nav-brand">Sümeyye Karaköse</span>
     <ul>
@@ -178,22 +154,11 @@
     </ul>
   </nav>
 
-  <!-- HEADER -->
   <header>
     <h1>Uygulama-1 &nbsp;<span style="font-size:1rem;font-weight:400;color:var(--muted);font-family:'Source Sans 3',sans-serif;">Hafta 6-1</span></h1>
     <p>Öğrenci not hesaplama uygulaması &mdash; Vize %40 + Final %60</p>
   </header>
 
-  <!-- AÇIKLAMA BANDI -->
-  <div style="padding: 0 40px; margin-top: 24px;">
-    <div class="uygulama-info">
-      <strong>Uygulama-1:</strong> Kullanıcı web sayfasında form aracılığıyla Ad Soyad, Vize notu ve Final notunu girecek
-      (<em>input type text/number</em>), ortalama hesaplayıp (vize %40, final %60) harf notuna çevirecek ve
-      geçti/kaldı yazacak (durum &ge; 50 ise geçti).
-    </div>
-  </div>
-
-  <!-- HESAPLAMA FORMU -->
   <div class="calc-container">
     <h2>Öğrenci Not Hesaplama</h2>
 
@@ -211,7 +176,6 @@
 
     <button class="btn-hesapla" onclick="hesapla()">Hesapla</button>
 
-    <!-- SONUÇ KUTUSU -->
     <div class="result-box" id="resultBox">
       <div class="result-name" id="resName"></div>
       <div class="result-line">
@@ -222,7 +186,6 @@
     </div>
   </div>
 
-  <!-- FOOTER – mevcut tasarımla aynı -->
   <footer>
     <div class="footer-inner">
       <span>Telif &copy; Sümeyye Karaköse / 2026</span>
@@ -234,18 +197,15 @@
 
 <script>
   function hesapla() {
-    /* --- alanları al --- */
     const ad    = document.getElementById('adSoyad').value.trim();
     const vize  = document.getElementById('vize').value;
     const final = document.getElementById('final').value;
 
-    /* --- hata elemanlarını sıfırla --- */
     ['err-ad','err-vize','err-final'].forEach(id => {
       document.getElementById(id).classList.remove('visible');
     });
     document.getElementById('resultBox').classList.remove('visible');
 
-    /* --- doğrulama --- */
     let hata = false;
 
     if (!ad) {
@@ -268,10 +228,9 @@
 
     if (hata) return;
 
-    /* --- hesaplama --- */
     const ort = vizeN * 0.40 + finalN * 0.60;
 
-    /* --- harf notu --- */
+    /* Harf notu – FF ise durum her zaman Kaldı */
     let harf;
     if      (ort >= 90) harf = 'AA';
     else if (ort >= 85) harf = 'BA';
@@ -283,9 +242,9 @@
     else if (ort >= 55) harf = 'FD';
     else                harf = 'FF';
 
-    const gecti = ort >= 50;
+    /* FF ise kaldı, aksi hâlde ortalama >= 50 kontrolü */
+    const gecti = harf !== 'FF' && ort >= 50;
 
-    /* --- sonucu göster --- */
     document.getElementById('resName').textContent = ad;
     document.getElementById('resOrt').textContent  = ort.toFixed(2);
     document.getElementById('resHarf').textContent = harf;
@@ -298,7 +257,6 @@
     document.getElementById('resultBox').classList.add('visible');
   }
 
-  /* Enter tuşuyla da çalışsın */
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') hesapla();
   });
