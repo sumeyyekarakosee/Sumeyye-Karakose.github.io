@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uygulama-2 | Birim Dönüştürücü</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Bu sayfaya özel ek stiller */
+        .converter-container {
+            width: 450px;
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .converter-container h2 {
+            font-family: 'Lora', serif;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
+        
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #dcfce7;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #166534;
+        }
+        .btn-calc {
+            width: 100%;
+            padding: 12px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <h1>Uygulama-2 <small style="font-size: 0.5em; color: gray;">Hafta 6-2</small></h1>
+        <p>Birim Dönüştürücü Uygulaması — Mühendislik Hesaplamaları</p>
+    </header>
+
+    <main style="display: block;"> <div class="converter-container">
+            <h2>Birim Dönüştürücü</h2>
+            
+            <div class="form-group">
+                <label>Değer Giriniz:</label>
+                <input type="number" id="inputValue" placeholder="Örn: 50" class="contact-container" style="margin-bottom:0;">
+            </div>
+
+            <div class="form-group">
+                <label>Dönüşüm Tipi:</label>
+                <select id="convertType" class="contact-container">
+                    <option value="c-f">Celsius -> Fahrenheit</option>
+                    <option value="c-k">Celsius -> Kelvin</option>
+                    <option value="m-km">Metre -> Kilometre</option>
+                    <option value="kg-g">Kilogram -> Gram</option>
+                </select>
+            </div>
+
+            <button onclick="hesapla()" class="btn-calc">Hesapla</button>
+
+            <div class="result-box" id="resultArea">
+                Sonuç: -
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Telif &copy; Sümeyye Karaköse / 2026</span>
+            <a href="index.html" class="btn-back">Ana Sayfaya Dön</a>
+        </div>
+    </footer>
+</div>
+
+<script>
+    function hesapla() {
+        const val = parseFloat(document.getElementById('inputValue').value);
+        const type = document.getElementById('convertType').value;
+        const resArea = document.getElementById('resultArea');
+        
+        if (isNaN(val)) {
+            resArea.innerHTML = "Lütfen bir sayı girin!";
+            return;
+        }
+
+        let result;
+        switch(type) {
+            case 'c-f': result = (val * 9/5) + 32; break;
+            case 'c-k': result = val + 273.15; break;
+            case 'm-km': result = val / 1000; break;
+            case 'kg-g': result = val * 1000; break;
+        }
+
+        // Sonucu binlik ayracı ile biçimlendir (Görseldeki 50.000 formatı için)
+        resArea.innerHTML = "Sonuç: " + result.toLocaleString('tr-TR');
+    }
+</script>
+
+</body>
+</html>
