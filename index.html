@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="wrapper">
     <nav>
         <span class="nav-brand">Sümeyye Karaköse</span>
@@ -16,15 +15,12 @@
             <li><a href="about.html">Hakkımda</a></li>
             <li><a href="interests.html">İlgi Alanlarım</a></li>
             <li><a href="contact.html">İletişim</a></li>
-            <li><a href="flexbox.html" class="btn-27mar26">27Mar26</a></li>
         </ul>
     </nav>
-
     <header>
         <h1>Sümeyye Karaköse</h1>
         <p>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</p>
     </header>
-
     <main>
         <div class="content">
             <h2>Hoş geldiniz</h2>
@@ -32,7 +28,7 @@
                 Bu web sitesi, Web Programlama dersi kapsamında hazırlanmış <strong>örnek bir kişisel tanıtım sayfasıdır.</strong><br>
                 Daha fazla bilgi için <i>Hakkımda</i> sayfasını ziyaret edebilirsiniz.
             </p>
-            
+
             <h2 style="margin-top:20px;">Öğrenme Hedeflerim</h2>
             <ol>
                 <li>HTML temellerini öğrenmek</li>
@@ -40,8 +36,17 @@
                 <li>JavaScript ile etkileşim eklemek</li>
                 <li>ASP.NET Core ile dinamik site geliştirmek</li>
             </ol>
-        </div>
 
+            <!-- ★ BUTON GRUBU ★
+                 .btn-group-row: butonları yan yana dizer (style.css'te tanımlı)
+                 .btn-27mar26:   flexbox ödevini açar
+                 .btn-hafta:     hafta6-1.html sayfasını açar (style.css'te tanımlı)
+            -->
+            <div class="btn-group-row">
+                <a href="flexbox.html"  class="btn-27mar26">27Mar26</a>
+                <a href="hafta6-1.html" class="btn-hafta">Hafta 6-1</a>
+            </div>
+        </div>
         <div class="sidebar">
             <h2>Hızlı Bilgiler</h2>
             <ul>
@@ -51,11 +56,9 @@
             </ul>
         </div>
     </main>
-
     <footer>
         Telif &copy; Sümeyye Karaköse / 2026
     </footer>
 </div>
-
 </body>
 </html>
