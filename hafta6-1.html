@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hafta 6-1 | Öğrenci Not Hesaplama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── HAFta 6-1 sayfasına özel stiller ── */
+
+    /* Hesaplama formu kapsayıcısı – mevcut .contact-container ile aynı yapı */
+    .calc-container {
+      width: 560px;
+      max-width: calc(100% - 80px);
+      margin: 40px auto;
+      padding: 32px 36px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      background-color: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .calc-container h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 28px;
+      color: var(--text);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Input alanları – mevcut contact form stiliyle birebir uyumlu */
+    .calc-container label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 6px;
+      margin-top: 16px;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .calc-container input[type="text"],
+    .calc-container input[type="number"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background-color: var(--white);
+      color: var(--text);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.93rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+
+    .calc-container input[type="text"]:focus,
+    .calc-container input[type="number"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(91, 127, 166, 0.15);
+    }
+
+    /* Hata mesajı – input altında kırmızı küçük yazı */
+    .field-error {
+      font-size: 0.8rem;
+      color: #dc2626;
+      margin-top: 4px;
+      min-height: 18px;
+      font-weight: 600;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    /* Hesapla butonu – mevcut .btn-submit ile aynı stil */
+    .btn-hesapla {
+      width: 100%;
+      padding: 12px 20px;
+      margin-top: 24px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--accent);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background-color 0.25s, transform 0.1s;
+    }
+    .btn-hesapla:hover  { background-color: var(--accent-dk); }
+    .btn-hesapla:active { transform: scale(0.98); }
+
+    /* Sonuç kutusu */
+    .result-box {
+      margin-top: 24px;
+      padding: 20px 22px;
+      background: var(--left-bg);
+      border: 1px solid var(--left-border);
+      border-top: 3px solid var(--left-border);
+      border-radius: 6px;
+      display: none;           /* JavaScript ile gösterilir */
+      animation: fadeIn .35s ease;
+    }
+    .result-box.visible { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0);   }
+    }
+
+    .result-box .result-name {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .result-box .result-line {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .result-box .result-line strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Geçti / Kaldı renk vurgusu */
+    .badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+    .badge.gecti  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .badge.kaldi  { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+    /* Uygulama açıklama bandı */
+    .uygulama-info {
+      width: 560px;
+      max-width: calc(100% - 80px);
+      margin: 0 auto 0;
+      padding: 14px 20px;
+      background: var(--right-bg);
+      border: 1px solid var(--right-border);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .uygulama-info strong { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- NAV – mevcut tasarımla aynı -->
+  <nav>
+    <span class="nav-brand">Sümeyye Karaköse</span>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="about.html">Hakkımda</a></li>
+      <li><a href="interests.html">İlgi Alanlarım</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Uygulama-1 &nbsp;<span style="font-size:1rem;font-weight:400;color:var(--muted);font-family:'Source Sans 3',sans-serif;">Hafta 6-1</span></h1>
+    <p>Öğrenci not hesaplama uygulaması &mdash; Vize %40 + Final %60</p>
+  </header>
+
+  <!-- AÇIKLAMA BANDI -->
+  <div style="padding: 0 40px; margin-top: 24px;">
+    <div class="uygulama-info">
+      <strong>Uygulama-1:</strong> Kullanıcı web sayfasında form aracılığıyla Ad Soyad, Vize notu ve Final notunu girecek
+      (<em>input type text/number</em>), ortalama hesaplayıp (vize %40, final %60) harf notuna çevirecek ve
+      geçti/kaldı yazacak (durum &ge; 50 ise geçti).
+    </div>
+  </div>
+
+  <!-- HESAPLAMA FORMU -->
+  <div class="calc-container">
+    <h2>Öğrenci Not Hesaplama</h2>
+
+    <label for="adSoyad">Ad Soyad</label>
+    <input type="text" id="adSoyad" placeholder="Örn: Filiz Akın" />
+    <span class="field-error" id="err-ad">Ad Soyad alanı boş bırakılamaz.</span>
+
+    <label for="vize">Vize Notu</label>
+    <input type="number" id="vize" placeholder="0 – 100" min="0" max="100" />
+    <span class="field-error" id="err-vize">Vize notu 0 ile 100 arasında olmalıdır.</span>
+
+    <label for="final">Final Notu</label>
+    <input type="number" id="final" placeholder="0 – 100" min="0" max="100" />
+    <span class="field-error" id="err-final">Final notu 0 ile 100 arasında olmalıdır.</span>
+
+    <button class="btn-hesapla" onclick="hesapla()">Hesapla</button>
+
+    <!-- SONUÇ KUTUSU -->
+    <div class="result-box" id="resultBox">
+      <div class="result-name" id="resName"></div>
+      <div class="result-line">
+        Ortalama: <strong id="resOrt"></strong><br />
+        Harf Notu: <strong id="resHarf"></strong><br />
+        Durum: <span id="resDurum"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER – mevcut tasarımla aynı -->
+  <footer>
+    <div class="footer-inner">
+      <span>Telif &copy; Sümeyye Karaköse / 2026</span>
+      <a href="index.html" class="btn-back">← Ana Sayfa</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function hesapla() {
+    /* --- alanları al --- */
+    const ad    = document.getElementById('adSoyad').value.trim();
+    const vize  = document.getElementById('vize').value;
+    const final = document.getElementById('final').value;
+
+    /* --- hata elemanlarını sıfırla --- */
+    ['err-ad','err-vize','err-final'].forEach(id => {
+      document.getElementById(id).classList.remove('visible');
+    });
+    document.getElementById('resultBox').classList.remove('visible');
+
+    /* --- doğrulama --- */
+    let hata = false;
+
+    if (!ad) {
+      document.getElementById('err-ad').classList.add('visible');
+      hata = true;
+    }
+
+    const vizeN  = parseFloat(vize);
+    const finalN = parseFloat(final);
+
+    if (vize === '' || isNaN(vizeN) || vizeN < 0 || vizeN > 100) {
+      document.getElementById('err-vize').classList.add('visible');
+      hata = true;
+    }
+
+    if (final === '' || isNaN(finalN) || finalN < 0 || finalN > 100) {
+      document.getElementById('err-final').classList.add('visible');
+      hata = true;
+    }
+
+    if (hata) return;
+
+    /* --- hesaplama --- */
+    const ort = vizeN * 0.40 + finalN * 0.60;
+
+    /* --- harf notu --- */
+    let harf;
+    if      (ort >= 90) harf = 'AA';
+    else if (ort >= 85) harf = 'BA';
+    else if (ort >= 80) harf = 'BB';
+    else if (ort >= 75) harf = 'CB';
+    else if (ort >= 70) harf = 'CC';
+    else if (ort >= 65) harf = 'DC';
+    else if (ort >= 60) harf = 'DD';
+    else if (ort >= 55) harf = 'FD';
+    else                harf = 'FF';
+
+    const gecti = ort >= 50;
+
+    /* --- sonucu göster --- */
+    document.getElementById('resName').textContent = ad;
+    document.getElementById('resOrt').textContent  = ort.toFixed(2);
+    document.getElementById('resHarf').textContent = harf;
+
+    const durumEl = document.getElementById('resDurum');
+    durumEl.innerHTML = gecti
+      ? '<span class="badge gecti">Geçti</span>'
+      : '<span class="badge kaldi">Kaldı</span>';
+
+    document.getElementById('resultBox').classList.add('visible');
+  }
+
+  /* Enter tuşuyla da çalışsın */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') hesapla();
+  });
+</script>
+</body>
+</html>
