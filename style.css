@@ -17,7 +17,7 @@
   --right-bg:     #eaf0f8;
   --left-border:  #c8b88a;
   --right-border: #9ab4cc;
-  --footer-bg:    #d4c9b0;
+  --footer-bg:    #564a2f;
 }
 
 *, *::before, *::after {
@@ -433,7 +433,7 @@ footer {
 /* ── FOOTER WITH BACK BUTTON ── */
 footer {
   background: var(--footer-bg);
-  color: #aaa;
+  color: #ffffff;
   padding: 18px 28px;
   font-size: 0.85rem;
 }
