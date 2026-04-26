@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hafta 7 – Bootstrap & JavaScript | WP Lab</title>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <!-- Özel CSS -->
+  <link rel="stylesheet" href="styles/hafta7.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ─────────────────────────────────────────────────── -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">WP Lab</a>
+      <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto me-3">
+          <li class="nav-item"><a class="nav-link active" href="#">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="#atolye">Atölyeler</a></li>
+          <li class="nav-item"><a class="nav-link" href="#basvuru">Başvuru</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sonuc">Sonuç</a></li>
+        </ul>
+        <button id="themeToggleBtn">Koyu Temaya Geç</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────────────────────── -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <!-- Sol: Açıklama -->
+        <div class="col-lg-6">
+          <div class="hero-badge">Hafta 7 Laboratuvarı</div>
+          <h1 class="mb-3">Bootstrap ve JavaScript ile<br>Etkinlik Kayıt Sayfası</h1>
+          <p class="mb-4">Bu sayfada Bootstrap ile responsive bir arayüz tasarlanır; JavaScript ile de tema değiştirme ve form verilerinden başvuru özeti üretme işlemleri yapılır.</p>
+          <a href="#basvuru" class="btn btn-primary me-3 mb-2">Başvuru Formuna Git</a>
+          <button id="themeToggleBtnHero" class="btn btn-outline-secondary mb-2" onclick="document.getElementById('themeToggleBtn').click(); this.textContent = document.getElementById('themeToggleBtn').textContent;">Koyu Temaya Geç</button>
+        </div>
+        <!-- Sağ: Bilgi kartı -->
+        <div class="col-lg-6">
+          <div class="hero-info-card">
+            <h5>Neler Kullanıldı?</h5>
+            <div class="mb-3">
+              <span class="tag-badge tag-navbar">Navbar</span>
+              <span class="tag-badge tag-grid">Grid</span>
+              <span class="tag-badge tag-card">Card</span>
+              <span class="tag-badge tag-form">Form</span>
+              <span class="tag-badge tag-alert">Alert</span>
+            </div>
+            <ul class="hero-info-list">
+              <li>Bootstrap CDN kullanımı</li>
+              <li>Responsive sütun yapısı</li>
+              <li>JavaScript ile form verisi okuma</li>
+              <li>Tema değiştirme işlemi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ATÖLYE İÇERİKLERİ (3 Card) ─────────────────────────────── -->
+  <section class="section-light py-5" id="atolye">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Atölye İçerikleri</h2>
+        <p class="section-subtitle">Bootstrap bileşenlerini kullanarak tasarlanmış örnek kartlar</p>
+      </div>
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="lab-card">
+            <span class="card-number num-blue">01</span>
+            <h4>Responsive Tasarım</h4>
+            <p>Container, row, col yapıları ile farklı ekranlarda uyumlu görünüm oluşturulur.</p>
+            <a href="#" class="btn-outline-custom mt-3">Detay</a>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="lab-card">
+            <span class="card-number num-green">02</span>
+            <h4>Form Yapıları</h4>
+            <p>Bootstrap form-control, form-select ve form-check sınıfları kullanılır.</p>
+            <a href="#basvuru" class="btn-outline-custom mt-3">Detay</a>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="lab-card">
+            <span class="card-number num-yellow">03</span>
+            <h4>JavaScript Etkileşimi</h4>
+            <p>Form gönderildiğinde özet kartı oluşturulur ve tema butonu ile sayfa görünümü değişir.</p>
+            <a href="#sonuc" class="btn-outline-custom mt-3">Detay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ETKİNLİK BİLGİLERİ + NEDEN KATILMALI ────────────────────── -->
+  <section class="section-dark-alt py-5">
+    <div class="container">
+      <div class="row g-4 align-items-stretch">
+        <!-- Etkinlik bilgileri -->
+        <div class="col-lg-5">
+          <div class="event-table-card h-100">
+            <h4>Etkinlik Bilgileri</h4>
+            <div class="event-row">
+              <span class="event-label">Tarih</span>
+              <span class="event-badge badge-blue">12 Mayıs</span>
+            </div>
+            <div class="event-row">
+              <span class="event-label">Saat</span>
+              <span class="event-badge badge-dark">13.30</span>
+            </div>
+            <div class="event-row">
+              <span class="event-label">Yer</span>
+              <span class="event-badge badge-green">Lab 205</span>
+            </div>
+            <div class="event-row">
+              <span class="event-label">Kontenjan</span>
+              <span class="event-badge badge-red">40 Kişi</span>
+            </div>
+          </div>
+        </div>
+        <!-- Neden katılmalı -->
+        <div class="col-lg-7">
+          <h4 class="section-title mb-4" style="font-size:1.3rem;">Neden Katılmalısınız?</h4>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="why-card accent-blue">
+                <h6>Bootstrap pratiği</h6>
+                <p>Hazır sınıflarla kısa sürede profesyonel arayüz oluşturmayı görürsünüz.</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="why-card accent-green">
+                <h6>JavaScript mantığı</h6>
+                <p>DOM erişimi, event listener ve koşullu yapı örneği uygulanır.</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="why-card accent-yellow">
+                <h6>Gerçek senaryo</h6>
+                <p>Basit ama gerçekçi bir etkinlik kayıt sayfası geliştirilir.</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="why-card accent-teal">
+                <h6>GitHub Pages uyumu</h6>
+                <p>Sayfa doğrudan mevcut ana sayfadan erişilebilir şekilde hazırlanır.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BAŞVURU FORMU ─────────────────────────────────────────────── -->
+  <section class="form-section py-5" id="basvuru">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="form-card">
+            <div class="d-flex justify-content-between align-items-start mb-4 pb-3" style="border-bottom: 1px solid var(--border);">
+              <div>
+                <h3>Başvuru Formu</h3>
+                <p class="section-subtitle mb-0">Formu doldurun, JavaScript otomatik olarak başvuru özetinizi oluştursun.</p>
+              </div>
+              <span class="tag-badge tag-form ms-3 mt-1">Bootstrap Form</span>
+            </div>
+
+            <form id="applicationForm" novalidate>
+              <!-- Ad Soyad & E-posta -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="fullName" class="form-label">Ad Soyad *</label>
+                  <input type="text" class="form-control" id="fullName" placeholder="Ad ve soyadınız">
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">E-posta *</label>
+                  <input type="email" class="form-control" id="email" placeholder="ornek@universite.edu.tr">
+                </div>
+              </div>
+
+              <!-- Bölüm -->
+              <div class="mb-3">
+                <label for="department" class="form-label">Bölüm *</label>
+                <select class="form-select" id="department">
+                  <option value="">Bölümünüzü seçin…</option>
+                  <option>Bilgisayar Mühendisliği</option>
+                  <option>Yazılım Mühendisliği</option>
+                  <option>Elektrik-Elektronik Mühendisliği</option>
+                  <option>Endüstri Mühendisliği</option>
+                  <option>Diğer</option>
+                </select>
+              </div>
+
+              <!-- Neden katılmak istiyorsunuz -->
+              <div class="mb-3">
+                <label for="whyJoin" class="form-label">Neden Katılmak İstiyorsunuz? *</label>
+                <textarea class="form-control" id="whyJoin" rows="3" placeholder="Kısaca açıklayın…"></textarea>
+              </div>
+
+              <!-- Koşullar -->
+              <div class="mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="agreeTerms">
+                  <label class="form-check-label" for="agreeTerms" style="font-size:0.9rem; color: var(--muted);">
+                    Etkinlik katılım koşullarını okudum ve kabul ediyorum.
+                  </label>
+                </div>
+              </div>
+
+              <!-- Butonlar -->
+              <div class="d-flex gap-3">
+                <button type="submit" class="btn-submit-custom">Başvuruyu Gönder</button>
+                <button type="reset" class="btn-reset-custom">Formu Temizle</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SONUÇ ALANI ────────────────────────────────────────────────── -->
+  <section class="section-light py-5" id="sonuc">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h4 class="section-title mb-3" style="font-size:1.2rem;">Başvuru Sonucu</h4>
+          <div id="resultArea">
+            <p class="text-center py-3" style="color: var(--muted); font-size:0.92rem;">Formu doldurarak gönderin; başvuru özetiniz burada görünecektir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer class="py-3">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <span>Telif &copy; Sümeyye Karaköse / 2026</span>
+      <a href="lab.html" style="color:#9ab4cc; font-size:0.85rem; text-decoration:none; font-weight:600;">← Laboratuvar Ana Sayfasına Dön</a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Özel JS -->
+  <script src="scripts/hafta7.js"></script>
+
+  <!-- Hero'daki tema butonunu senkronize et -->
+  <script>
+    const heroBtnSync = document.getElementById('themeToggleBtnHero');
+    const mainBtn = document.getElementById('themeToggleBtn');
+    heroBtnSync.addEventListener('click', () => {
+      setTimeout(() => { heroBtnSync.textContent = mainBtn.textContent; }, 10);
+    });
+  </script>
+
+</body>
+</html>
