@@ -5,9 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sümeyye Karaköse | Ana Sayfa</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .btn-lab {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 11px 26px;
+      background-color: var(--accent);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      transition: background-color 0.25s, border-color 0.25s, transform 0.1s;
+      cursor: pointer;
+    }
+    .btn-lab:hover {
+      background-color: var(--accent-dk);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+    .btn-lab:active { transform: scale(0.97); }
+  </style>
 </head>
 <body>
 <div class="wrapper">
+
   <nav>
     <span class="nav-brand">Sümeyye Karaköse</span>
     <ul>
@@ -25,6 +50,7 @@
 
   <main>
     <div class="content">
+
       <h2>Hoş geldiniz</h2>
       <p>
         Bu web sitesi, Web Programlama dersi kapsamında hazırlanmış
@@ -32,7 +58,9 @@
         Daha fazla bilgi için <i>Hakkımda</i> sayfasını ziyaret edebilirsiniz.
       </p>
 
-      <h2 style="margin-top:20px;">Öğrenme Hedeflerim</h2>
+      <a href="lab.html" class="btn-lab">Laboratuvar Etkinlikleri</a>
+
+      <h2 style="margin-top: 28px;">Öğrenme Hedeflerim</h2>
       <ol>
         <li>HTML temellerini öğrenmek</li>
         <li>CSS ile sayfa tasarlamak</li>
@@ -40,13 +68,6 @@
         <li>ASP.NET Core ile dinamik site geliştirmek</li>
       </ol>
 
-      <!-- Buton grubu -->
-      <div class="btn-group-row">
-        <a href="flexbox.html" class="btn-27mar26">27Mar26</a>
-        <a href="hafta6-1.html" class="btn-hafta">Hafta 6-1</a>
-        <a href="hafta6-2.html" class="btn-birim">Hafta 6-2</a>
-        <a href="lab.html" class="btn-hafta7">Hafta 7</a>
-      </div>
     </div>
 
     <div class="sidebar">
@@ -62,6 +83,7 @@
   <footer>
     Telif &copy; Sümeyye Karaköse / 2026
   </footer>
+
 </div>
 </body>
 </html>
