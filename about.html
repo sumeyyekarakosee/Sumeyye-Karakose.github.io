@@ -1,57 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Hakkımda</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sümeyye Karaköse | Hakkımda</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrapper">
 
-    <header>
-        <h1>Hakkımda</h1>
-        <p>Kendimi ve hedeflerimi tanıttığım sayfa</p>
-    </header>
+  <nav>
+    <span class="nav-brand">Sümeyye Karaköse</span>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="about.html" class="active">Hakkımda</a></li>
+      <li><a href="interests.html">İlgi Alanlarım</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
-    </nav>
+  <header>
+    <h1>Hakkımda</h1>
+    <p>Kendimi ve hedeflerimi tanıttığım sayfa</p>
+  </header>
 
-    <main>
-        <h2>Ben Kimim?</h2>
-        <p>Merhaba, ben <strong>Bilgisayar Mühendisliği öğrencisiyim</strong>. Web teknolojilerine ilgi duyuyor ve kendimi bu alanda geliştirmeyi hedefliyorum.</p>
-        <p>Özellikle <em>frontend geliştirme</em> ve kullanıcı deneyimi konularında çalışmalar yapmayı seviyorum.</p>
+  <main>
+    <div class="content">
 
-        <h2>Eğitim Bilgilerim</h2>
-        <ul>
-            <li>Marmara Üniversitesi</li>
-            <li>Bilgisayar Mühendisliği</li>
-            <li>Web Programlama dersi</li>
-        </ul>
+      <h2>Ben Kimim?</h2>
+      <p>Merhaba, ben <strong>Bilgisayar Mühendisliği öğrencisiyim</strong>. Web teknolojilerine ilgi duyuyor ve kendimi bu alanda geliştirmeyi hedefliyorum.</p>
+      <p style="margin-top: 10px;">Özellikle <em>frontend geliştirme</em> ve kullanıcı deneyimi konularında çalışmalar yapmayı seviyorum.</p>
 
-        <h2>Motivasyonum</h2>
-        <blockquote>
-            <p>"İyi yazılmış bir web sitesi, hem kullanıcıyı hem geliştiriciyi mutlu eder."</p>
-        </blockquote>
+      <h2 style="margin-top: 20px;">Motivasyonum</h2>
+      <blockquote style="
+        border-left: 3px solid var(--left-border);
+        margin: 12px 0;
+        padding: 10px 16px;
+        background: var(--cream);
+        border-radius: 0 4px 4px 0;
+        color: var(--muted);
+        font-style: italic;
+        font-size: 0.95rem;
+      ">
+        "İyi yazılmış bir web sitesi, hem kullanıcıyı hem geliştiriciyi mutlu eder."
+      </blockquote>
 
-        <h2>Hedeflerim</h2>
-        <ol>
-            <li>Modern web teknolojilerini öğrenmek</li>
-            <li>Responsive tasarım geliştirmek</li>
-            <li>ASP.NET Core ile dinamik uygulamalar yazmak</li>
-        </ol>
+      <h2 style="margin-top: 20px;">Hedeflerim</h2>
+      <ol>
+        <li>Modern web teknolojilerini öğrenmek</li>
+        <li>Responsive tasarım geliştirmek</li>
+        <li>ASP.NET Core ile dinamik uygulamalar yazmak</li>
+      </ol>
 
-        <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
-    </main>
+    </div>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Web Programlama Dersi</p>
-    </footer>
+    <div class="sidebar">
 
+      <h2>Eğitim Bilgilerim</h2>
+      <h3>Üniversite</h3>
+      <p>Marmara Üniversitesi</p>
+      <h3>Bölüm</h3>
+      <p>Bilgisayar Mühendisliği</p>
+      <h3>Ders</h3>
+      <p>Web Programlama</p>
+
+      <h2 style="margin-top: 20px;">Hızlı Bilgiler</h2>
+      <ul>
+        <li><strong>İlgi Alanı:</strong> Web Teknolojileri</li>
+        <li><strong>Odak:</strong> Frontend Geliştirme</li>
+        <li><strong>Hedef:</strong> Full-Stack Developer</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Telif &copy; Sümeyye Karaköse / 2026</span>
+      <a href="index.html" class="btn-back">← Ana Sayfaya Dön</a>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
