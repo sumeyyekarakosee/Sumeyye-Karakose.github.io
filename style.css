@@ -10,14 +10,14 @@
   --sand:         #e8dfc8;
   --accent:       #5b7fa6;
   --accent-dk:    #3d5c80;
-  --text:         #2c2c2c;
+  --text:         #5b7fa6;
   --muted:        #6b6b6b;
   --border:       #d4c9b0;
   --left-bg:      #fdf6e3;
   --right-bg:     #eaf0f8;
   --left-border:  #c8b88a;
   --right-border: #9ab4cc;
-  --footer-bg:    #45150d;
+  --footer-bg:    #d4c9b0;
 }
 
 *, *::before, *::after {
