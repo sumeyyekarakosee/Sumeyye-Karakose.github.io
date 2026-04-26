@@ -590,3 +590,32 @@ footer {
 .btn-birim:active {
   transform: scale(0.97);
 }
+
+/* ════════════════════════════════════════════════════════════════
+   ★ Hafta 7 butonu
+   ════════════════════════════════════════════════════════════════ */
+.btn-hafta7 {
+  display: inline-block;
+  padding: 10px 22px;
+  background-color: #5b7fa6;   /* --accent ile aynı */
+  color: #ffffff;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.1s;
+  cursor: pointer;
+}
+
+.btn-hafta7:hover {
+  background-color: #3d5c80;   /* --accent-dk */
+  border-color: #5b7fa6;
+  text-decoration: none;
+}
+
+.btn-hafta7:active {
+  transform: scale(0.97);
+}
