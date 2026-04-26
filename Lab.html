@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratuvar Ana Sayfası</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:        #f5f0e8;
+      --white:        #ffffff;
+      --sand:         #e8dfc8;
+      --accent:       #5b7fa6;
+      --accent-dk:    #3d5c80;
+      --text:         #2c2c2c;
+      --muted:        #6b6b6b;
+      --border:       #d4c9b0;
+      --left-bg:      #fdf6e3;
+      --right-bg:     #eaf0f8;
+      --left-border:  #c8b88a;
+      --right-border: #9ab4cc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .lab-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      max-width: 680px;
+      width: 100%;
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--right-bg);
+      color: var(--accent);
+      border: 1px solid var(--right-border);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-right: 12px;
+      margin-bottom: 12px;
+    }
+    .btn-primary:hover { background: var(--accent-dk); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-secondary {
+      display: inline-block;
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-bottom: 12px;
+    }
+    .btn-secondary:hover { background: var(--cream); }
+
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .week-card {
+      background: var(--left-bg);
+      border: 1px solid var(--left-border);
+      border-radius: 8px;
+      padding: 16px 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s, border-color 0.2s, transform 0.1s;
+    }
+    .week-card:hover {
+      background: var(--right-bg);
+      border-color: var(--right-border);
+      transform: translateY(-2px);
+    }
+    .week-card.active {
+      background: var(--accent);
+      border-color: var(--accent-dk);
+      color: var(--white);
+    }
+    .week-card .week-label {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .week-card .week-topic {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .week-card.active .week-topic { color: rgba(255,255,255,0.8); }
+
+    .back-link {
+      display: block;
+      margin-top: 28px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="lab-card">
+    <div class="badge">Web Programlama Dersi</div>
+    <h1>Laboratuvar Ana Sayfası</h1>
+    <p class="subtitle">Bu sayfa GitHub Pages üzerinde yayınlanan laboratuvar uygulamalarına giriş için hazırlanmıştır. Aşağıdaki butondan hafta 7 uygulamasına geçebilirsiniz.</p>
+
+    <a href="hafta7.html" class="btn-primary">Hafta 7 Uygulamasına Git</a>
+    <a href="#haftalik" class="btn-secondary">Diğer Haftalar</a>
+
+    <div class="weeks-grid" id="haftalik">
+      <a href="#" class="week-card">
+        <div class="week-label">Hafta 1</div>
+        <div class="week-topic">GitHub Pages</div>
+      </a>
+      <a href="#" class="week-card">
+        <div class="week-label">Hafta 2</div>
+        <div class="week-topic">HTML + CSS</div>
+      </a>
+      <a href="#" class="week-card">
+        <div class="week-label">Hafta 3</div>
+        <div class="week-topic">Form Yapıları</div>
+      </a>
+      <a href="#" class="week-card">
+        <div class="week-label">Hafta 4</div>
+        <div class="week-topic">Flexbox</div>
+      </a>
+      <a href="#" class="week-card">
+        <div class="week-label">Hafta 5</div>
+        <div class="week-topic">Position</div>
+      </a>
+      <a href="#" class="week-card">
+        <div class="week-label">Hafta 6</div>
+        <div class="week-topic">JavaScript</div>
+      </a>
+      <a href="hafta7.html" class="week-card active">
+        <div class="week-label">Hafta 7</div>
+        <div class="week-topic">Bootstrap + JavaScript</div>
+      </a>
+    </div>
+
+    <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+  </div>
+</body>
+</html>
