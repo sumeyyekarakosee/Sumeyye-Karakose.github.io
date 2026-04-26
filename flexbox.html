@@ -27,9 +27,8 @@
 
     .wrapper {
       display: flex;
-      flex-direction: column;  
-      height: 100vh;
-      overflow-y: auto;
+      flex-direction: column;
+      min-height: 100vh;
       font-family: 'Source Sans 3', sans-serif;
       color: var(--text);
       background: var(--cream);
@@ -37,10 +36,10 @@
 
     nav {
       display: flex;
-      justify-content: space-between; 
-      align-items: center;           
-      height: 10vh;                 
-      width: 100%;                    
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+      width: 100%;
       padding: 0 28px;
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -66,16 +65,16 @@
     }
     nav a:hover { color: var(--accent); background: #eaf0f8; }
 
+    /* ── HERO ── */
     .hero {
       display: flex;
-      flex-direction: row;      
+      flex-direction: row;
       justify-content: space-between;
-      align-items: stretch;     
-      min-height: 35vh;             
-      padding: 20px 28px;
+      align-items: center;
+      padding: 28px 36px;
       background: var(--white);
       border-bottom: 1px solid var(--border);
-      gap: 24px;
+      gap: 32px;
       flex-shrink: 0;
     }
 
@@ -110,13 +109,17 @@
     }
     .hero-btn:hover { background: var(--accent-dk); }
 
+    /* Fotoğraf küçültüldü */
     .hero-image {
-      flex: 1;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      object-fit: cover;   
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
+    /* ── SECTIONS ── */
     .section {
       padding: 25px 28px;
       background: var(--cream);
@@ -137,10 +140,11 @@
       font-weight: 700;
     }
 
+    /* ── KARTLAR ── */
     .cards {
-      display: flex;        
-      flex-wrap: wrap;       
-      gap: 12px;             
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .card {
@@ -148,41 +152,55 @@
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 15px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .card h3 { font-family: 'Lora', serif; font-size: 0.88rem; font-weight: 700; }
-    .card p { font-size: 0.8rem; color: var(--muted); }
+    .card h3 {
+      font-family: 'Lora', serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-dk);
+    }
+    .card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
 
-    .flex-grow-boxes, .flex-grow-simple {
+    /* ── FLEX GROW KUTULAR ── */
+    .flex-grow-boxes {
       display: flex;
       gap: 12px;
       align-items: stretch;
-      min-height: 120px;
+      min-height: 100px;
     }
 
-    .fbox, .sbox {
+    .fbox {
       display: flex;
       flex-direction: column;
-      padding: 15px;
+      gap: 6px;
+      padding: 16px;
       border-radius: 6px;
       border: 1px solid var(--border);
     }
 
-    .fbox h4, .sbox h4 { font-family: 'Lora', serif; font-size: 0.88rem; }
+    .fbox h4 {
+      font-family: 'Lora', serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .fbox span { font-size: 0.8rem; color: var(--muted); }
+    .fbox p   { font-size: 0.8rem; color: var(--text); margin-top: 4px; line-height: 1.5; }
 
     .grow-1 { flex-grow: 1; background: var(--box1-bg); }
     .grow-2 { flex-grow: 2; background: var(--box2-bg); }
     .grow-3 { flex-grow: 1; background: var(--box3-bg); }
 
+    /* ── FOOTER ── */
     footer {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 10vh;
+      height: 52px;
       background: var(--footer-bg);
       color: #aaa;
       font-size: 0.85rem;
@@ -196,11 +214,11 @@
 <div class="wrapper">
 
   <nav>
-    <span class="nav-brand">LOGO</span>
+    <span class="nav-brand">Sümeyye Karaköse</span>
     <ul>
       <li><a href="index.html">Ana Sayfa</a></li>
-      <li><a href="about.html">Hakkında</a></li>
-      <li><a href="#">Dersler</a></li>
+      <li><a href="about.html">Hakkımda</a></li>
+      <li><a href="interests.html">İlgi Alanlarım</a></li>
       <li><a href="contact.html">İletişim</a></li>
     </ul>
   </nav>
@@ -209,35 +227,59 @@
     <div class="hero-text">
       <h1>Sümeyye Karaköse</h1>
       <p>Bilgisayar Mühendisliği | Marmara Üniversitesi</p>
-      <button class="hero-btn">Detaylar</button>
+      <p style="font-size:0.88rem; color: var(--muted);">Web Programlama Öğrencisi · Frontend & UI geliştirmeye ilgi duyuyor</p>
+      <a href="about.html" class="hero-btn">Hakkımda</a>
     </div>
-    <img src="WhatsApp Image 2026-03-16 at 21.40.04.jpeg" alt="Hero Fotoğraf" class="hero-image" />
+    <img src="WhatsApp Image 2026-03-16 at 21.40.04.jpeg" alt="Sümeyye Karaköse" class="hero-image" />
   </div>
 
+  <!-- KARTLAR -->
   <div class="section">
     <div class="section-header">
-      <span class="section-title">Kartlar Bölümü</span>
+      <span class="section-title">Hakkımda</span>
     </div>
     <div class="cards">
-      <div class="card"><h3>Kart 1</h3><p>İçerik açıklaması.</p></div>
-      <div class="card"><h3>Kart 2</h3><p>İçerik açıklaması.</p></div>
-      <div class="card"><h3>Kart 3</h3><p>İçerik açıklaması.</p></div>
-      <div class="card"><h3>Kart 4</h3><p>İçerik açıklaması.</p></div>
+      <div class="card">
+        <h3>Eğitim</h3>
+        <p>Marmara Üniversitesi Bilgisayar Mühendisliği bölümünde öğrenim görüyorum.</p>
+      </div>
+      <div class="card">
+        <h3>İlgi Alanlarım</h3>
+        <p>Web geliştirme, yapay zekâ uygulamaları ve mobil uygulama geliştirme.</p>
+      </div>
+      <div class="card">
+        <h3>Öğrendiklerim</h3>
+        <p>HTML, CSS, Flexbox, JavaScript ve Bootstrap ile arayüz geliştirme.</p>
+      </div>
+      <div class="card">
+        <h3>Hedeflerim</h3>
+        <p>ASP.NET Core ile dinamik web uygulamaları geliştirmek ve React öğrenmek.</p>
+      </div>
     </div>
   </div>
 
+  <!-- FLEX GROW KUTULAR -->
   <div class="section">
     <div class="section-header">
-      <span class="section-title">Flex Grow 1-2-1</span>
+      <span class="section-title">Öğrenme Yolculuğum</span>
     </div>
     <div class="flex-grow-boxes">
-      <div class="fbox grow-1"><h4>Kutu 1</h4><span>Grow: 1</span></div>
-      <div class="fbox grow-2"><h4>Kutu 2</h4><span>Grow: 2</span></div>
-      <div class="fbox grow-3"><h4>Kutu 3</h4><span>Grow: 1</span></div>
+      <div class="fbox grow-1">
+        <h4>Temel</h4>
+        <p>HTML & CSS ile statik sayfa yapısı kurma.</p>
+      </div>
+      <div class="fbox grow-2">
+        <h4>Geliştirme</h4>
+        <p>Flexbox, Grid, JavaScript ve Bootstrap ile dinamik, responsive arayüzler tasarlama. En çok zaman harcadığım alan.</p>
+      </div>
+      <div class="fbox grow-3">
+        <h4>Hedef</h4>
+        <p>ASP.NET Core & React ile full-stack projeler.</p>
+      </div>
     </div>
   </div>
 
-  <footer>© 2026 – Temel Flexbox Örneği</footer>
+  <footer>© 2026 – Sümeyye Karaköse | Temel Flexbox Örneği</footer>
 
 </div>
 </body>
