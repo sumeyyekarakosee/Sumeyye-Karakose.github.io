@@ -1,68 +1,82 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>İlgi Alanlarım</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sümeyye Karaköse | İlgi Alanlarım</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrapper">
 
-    <header>
-        <h1>İlgi Alanlarım</h1>
-        <p>Teknoloji ve kişisel ilgi alanlarım</p>
-    </header>
+  <nav>
+    <span class="nav-brand">Sümeyye Karaköse</span>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="about.html">Hakkımda</a></li>
+      <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
+      <li><a href="contact.html">İletişim</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
-    </nav>
+  <header>
+    <h1>İlgi Alanlarım</h1>
+    <p>Teknoloji ve kişisel ilgi alanlarım</p>
+  </header>
 
-    <main>
-        <h2>Teknoloji Alanındaki İlgi Alanlarım</h2>
-        <ul>
-            <li>Web geliştirme</li>
-            <li>Yapay zekâ uygulamaları</li>
-            <li>Mobil uygulama geliştirme</li>
-            <li>Öğrenmek istediğim teknolojiler
-                <ul>
-                    <li>React</li>
-                    <li>ASP.NET Core</li>
-                    <li>Flutter</li>
-                </ul>
-            </li>
-        </ul>
+  <main>
+    <div class="content">
 
-        <h2>Günlük Çalışma Rutinim</h2>
-        <ol>
-            <li>Ders materyallerini gözden geçirmek</li>
-            <li>Kodlama pratiği yapmak</li>
-            <li>Yeni teknolojiler araştırmak</li>
-            <li>Proje geliştirmek</li>
-        </ol>
+      <h2>Teknoloji Alanındaki İlgi Alanlarım</h2>
+      <ul>
+        <li>Web geliştirme</li>
+        <li>Yapay zekâ uygulamaları</li>
+        <li>Mobil uygulama geliştirme</li>
+        <li>Öğrenmek istediğim teknolojiler
+          <ul style="margin-top: 6px;">
+            <li>React</li>
+            <li>ASP.NET Core</li>
+            <li>Flutter</li>
+          </ul>
+        </li>
+      </ul>
 
-        <h2>Web Teknolojileri Sözlüğü</h2>
-        <dl>
-            <dt>HTML</dt>
-            <dd>Web sayfalarının iskeletini oluşturan işaretleme dilidir.</dd>
-            
-            <dt>CSS</dt>
-            <dd>Web sayfalarının görsel tasarımını düzenlemek için kullanılır.</dd>
-            
-            <dt>JavaScript</dt>
-            <dd>Web sayfalarına etkileşim kazandıran programlama dilidir.</dd>
-        </dl>
+      <h2 style="margin-top: 20px;">Günlük Çalışma Rutinim</h2>
+      <ol>
+        <li>Ders materyallerini gözden geçirmek</li>
+        <li>Kodlama pratiği yapmak</li>
+        <li>Yeni teknolojiler araştırmak</li>
+        <li>Proje geliştirmek</li>
+      </ol>
 
-        <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
-    </main>
+    </div>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Web Programlama Dersi</p>
-    </footer>
+    <div class="sidebar">
 
+      <h2>Web Teknolojileri Sözlüğü</h2>
+
+      <h3>HTML</h3>
+      <p>Web sayfalarının iskeletini oluşturan işaretleme dilidir.</p>
+
+      <h3>CSS</h3>
+      <p>Web sayfalarının görsel tasarımını düzenlemek için kullanılır.</p>
+
+      <h3>JavaScript</h3>
+      <p>Web sayfalarına etkileşim kazandıran programlama dilidir.</p>
+
+      <h3>React</h3>
+      <p>Bileşen tabanlı modern kullanıcı arayüzleri geliştirmeye yarayan JavaScript kütüphanesidir.</p>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Telif &copy; Sümeyye Karaköse / 2026</span>
+      <a href="index.html" class="btn-back">← Ana Sayfaya Dön</a>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
