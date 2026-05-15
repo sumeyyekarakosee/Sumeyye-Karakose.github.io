@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hafta 5 – CSS Position | Sümeyye Karaköse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #f5f0e8;
+      --white:      #ffffff;
+      --accent:     #5b7fa6;
+      --accent-dk:  #3d5c80;
+      --text:       #2c2c2c;
+      --muted:      #6b6b6b;
+      --border:     #d4c9b0;
+      --left-bg:    #fdf6e3;
+      --right-bg:   #eaf0f8;
+      --left-border:#c8b88a;
+      --right-border:#9ab4cc;
+      --footer-bg:  #2c2c2c;
+    }
+
+    /* ── PAGE ── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px 80px;
+    }
+
+    /* ── FIXED: Ana Sayfaya Dön (sol üst) ── */
+    .btn-fixed-back {
+      position: fixed;        /* position: fixed */
+      top: 18px;
+      left: 18px;
+      z-index: 1000;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0 3px 12px rgba(91,127,166,0.30);
+      transition: background 0.25s, transform 0.15s;
+      cursor: pointer;        /* hover: cursor değişiyor (1) */
+    }
+    .btn-fixed-back:hover {
+      background: var(--accent-dk);
+      transform: translateY(-2px);
+    }
+    .btn-fixed-back:active { transform: scale(0.96); }
+
+    /* ── FIXED: Yardımcı Menü (sağ alt) ── */
+    .btn-fixed-helper {
+      position: fixed;        /* position: fixed */
+      bottom: 22px;
+      right: 22px;
+      z-index: 1000;
+      background: var(--accent-dk);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(61,92,128,0.35);
+      cursor: help;           /* hover: cursor değişiyor (2) */
+      transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
+      /* @keyframes animasyon */
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+    .btn-fixed-helper:hover {
+      background: var(--accent);
+      box-shadow: 0 6px 20px rgba(91,127,166,0.45);
+      transform: scale(1.05);
+      animation-play-state: paused;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 16px rgba(61,92,128,0.35); }
+      50%       { box-shadow: 0 4px 28px rgba(61,92,128,0.65); }
+    }
+
+    /* ── KART ALANI (position: relative) ── */
+    .card-wrapper {
+      position: relative;     /* position: relative – kapsayıcı */
+      width: 100%;
+      max-width: 560px;
+      min-height: 420px;
+      background: linear-gradient(135deg, var(--right-bg) 0%, #dce8f5 50%, #e8e0f5 100%);
+      border: 1px solid var(--right-border);
+      border-radius: 18px;
+      padding: 44px 40px 52px;
+      box-shadow: 0 8px 36px rgba(91,127,166,0.14);
+      overflow: visible;
+    }
+
+    /* Dekoratif daire (z-index örneği) */
+    .deco-circle {
+      position: absolute;     /* position: absolute (dekor) */
+      bottom: -40px;
+      right: -30px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.4);
+      z-index: 0;             /* z-index: arka planda */
+      pointer-events: none;
+    }
+
+    /* İçerik z-index'i daire önünde */
+    .card-content {
+      position: relative;
+      z-index: 1;             /* z-index: içerik önde */
+    }
+
+    .card-content h1 {
+      font-family: 'Lora', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .card-content p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 340px;
+    }
+
+    /* ── ABSOLUTE ROZETLER ── */
+
+    /* Rozet 1: sol üst – Ücretsiz */
+    .badge-free {
+      position: absolute;     /* position: absolute (1) */
+      top: -14px;
+      left: 32px;
+      z-index: 2;
+      background: #fef9c3;
+      border: 1px solid #f0e06a;
+      color: #7a6500;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: default;        /* hover: cursor değişiyor (3) */
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .badge-free:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+
+    /* Rozet 2: sağ üst – Tarih */
+    .badge-date {
+      position: absolute;     /* position: absolute (2) */
+      top: -14px;
+      right: 32px;
+      z-index: 2;
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: default;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .badge-date:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+
+    /* Rozet 3: orta sağ – Konum */
+    .badge-location {
+      position: absolute;     /* position: absolute (3) */
+      top: 50%;
+      right: -16px;
+      transform: translateY(-50%);
+      z-index: 2;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .badge-location:hover {
+      background: var(--right-bg);
+      border-color: var(--right-border);
+      transform: translateY(calc(-50% - 3px));
+    }
+
+    /* Rozet 4: sağ alt – Son Kayıt */
+    .badge-deadline {
+      position: absolute;     /* position: absolute (4) */
+      bottom: -14px;
+      right: 32px;
+      z-index: 2;
+      background: #ffe4e6;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: default;
+      /* transition animasyonu */
+      transition: transform 0.2s, box-shadow 0.2s;
+      /* @keyframes blink animasyonu */
+      animation: blink-border 2s ease-in-out infinite;
+    }
+    .badge-deadline:hover {
+      transform: translateY(3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      animation-play-state: paused;
+    }
+
+    @keyframes blink-border {
+      0%, 100% { border-color: #fca5a5; }
+      50%       { border-color: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.3); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 60px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED: Ana Sayfaya Dön -->
+  <a href="index.html" class="btn-fixed-back">Ana Sayfaya Dön</a>
+
+  <!-- FIXED: Yardımcı Menü -->
+  <span class="btn-fixed-helper">Yardımcı Menü</span>
+
+  <!-- KART (position: relative kapsayıcı) -->
+  <div class="card-wrapper">
+
+    <!-- Dekoratif daire (z-index: 0, arkada) -->
+    <div class="deco-circle"></div>
+
+    <!-- Absolute rozetler -->
+    <span class="badge-free">Ücretsiz</span>
+    <span class="badge-date">24 Nisan</span>
+    <div class="badge-location">📍 Konum: Konferans Salonu</div>
+    <span class="badge-deadline">Son Kayıt</span>
+
+    <!-- İçerik (z-index: 1, önde) -->
+    <div class="card-content">
+      <h1>Teknoloji Topluluğu Etkinliği</h1>
+      <p>
+        Bu örnek sayfada amaç; CSS position özelliklerini kullanarak
+        tek bir duyuru kartı üzerinde <strong>relative</strong>,
+        <strong>absolute</strong>, <strong>fixed</strong>, z-index,
+        hover, cursor ve animasyon mantığını birlikte göstermektir.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>2026 – LAB Position Örnek Çalışması</footer>
+
+</body>
+</html>
